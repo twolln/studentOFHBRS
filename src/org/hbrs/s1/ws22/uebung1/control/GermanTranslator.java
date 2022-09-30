@@ -14,7 +14,7 @@ public class GermanTranslator implements Translator {
 			return sArray[number-1];
 		}
 		catch ( ArrayIndexOutOfBoundsException e ) { //Wenn nicht vorhanden... => Exception abfangen und neue IllegalArgumentException werfen
-			throw new IllegalArgumentException("Nur Zahlen zwischen 1 und 10 sind erlaubt!!!");
+			throw new IllegalArgumentException("Übersetzung der Zahl " + number + " nicht möglich (" + version + ")" );
 		}
 	}
 
