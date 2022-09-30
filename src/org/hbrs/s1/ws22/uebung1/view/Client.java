@@ -16,6 +16,11 @@ public class Client {
 					"[das Ergebnis an dieser Stelle]"  );
 
 		}
+
+		public static void main(String[] args) {
+			Client o = new Client();
+			o.display(10);
+		}
 }
 
 
