@@ -9,8 +9,13 @@ public class GermanTranslator implements Translator {
 	 */
 	public String translateNumber( int number ) {
 		// [ihr Source Code aus Übung 1-2]
-
-		return null;
+		String[] sArray = {"eins","zwei","drei","vier","fünf","sechs","sieben","acht","neun","zehn"};
+		try { //Versuche im Array einen Eintrag am entsprechenden index-1 zu finden
+			return sArray[number-1];
+		}
+		catch ( ArrayIndexOutOfBoundsException e ) { //Wenn nicht vorhanden... => Exception abfangen und neue IllegalArgumentException werfen
+			throw new IllegalArgumentException("Nur Zahlen zwischen 1 und 10 sind erlaubt!!!");
+		}
 	}
 
 	/**
