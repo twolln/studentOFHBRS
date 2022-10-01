@@ -1,9 +1,12 @@
-package org.hbrs.s1.ws22.uebung1.control;
+package org.hbrs.s1.ws22.uebung1.test;
 
+import org.hbrs.s1.ws22.uebung1.control.GermanTranslator;
+import org.hbrs.s1.ws22.uebung1.control.Translator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class GermanTranslatorTest {
 
