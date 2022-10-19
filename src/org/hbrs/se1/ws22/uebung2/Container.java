@@ -18,6 +18,10 @@ public class Container {
     //Methode zum Hinzufügen eines Member Objektes
     public void addMember(Member member) throws ContainerException {
 
+        if(member == null) {
+            throw new IllegalArgumentException();
+        }
+
         for (Member iMember : arrayList) {
             if (iMember.toString().equals(member.toString())) {
                 throw new ContainerException("Das Member-Objekt mit der ID " + member.getID() + " ist bereits vorhanden!");
