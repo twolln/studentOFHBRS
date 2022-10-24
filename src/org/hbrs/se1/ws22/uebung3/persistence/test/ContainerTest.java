@@ -2,7 +2,7 @@ package org.hbrs.se1.ws22.uebung3.persistence.test;
 
 import org.hbrs.se1.ws22.uebung3.persistence.ConcreteMember;
 import org.hbrs.se1.ws22.uebung3.persistence.Container;
-import org.hbrs.se1.ws22.uebung3.persistence.ContainerException;
+import org.hbrs.se1.ws22.uebung3.persistence.exception.ContainerException;
 import org.hbrs.se1.ws22.uebung3.persistence.Member;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
