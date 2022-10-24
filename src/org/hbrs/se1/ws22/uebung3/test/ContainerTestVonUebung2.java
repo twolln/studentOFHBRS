@@ -29,7 +29,7 @@ class ContainerTestVonUebung2 {
     void addMember() throws ContainerException {
         c.addMember(m1);
         assertEquals(c.size(),1);
-        c.dump();
+        //c.dump();
     }
 
 
@@ -88,7 +88,7 @@ class ContainerTestVonUebung2 {
     void dump() throws ContainerException {
         c.addMember(m1);
         c.addMember(m3);
-        c.dump();
+        //c.dump();
     }
 
     @Test

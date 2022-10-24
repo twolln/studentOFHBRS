@@ -42,14 +42,6 @@ public class Container {
     }
 
 
-    //Methode um alle abgespeicherten Member Objekte zu printen
-    public void dump() {
-        for (Member iMember : arrayList) {
-            System.out.println(iMember.toString());
-        }
-    }
-
-
     //Methode gibt Anzahl der gespeicherten Member Objekte zurück
     public int size() {
 
