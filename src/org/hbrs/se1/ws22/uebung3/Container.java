@@ -1,6 +1,6 @@
-package org.hbrs.se1.ws22.uebung3.persistence;
+package org.hbrs.se1.ws22.uebung3;
 
-import org.hbrs.se1.ws22.uebung3.persistence.exception.ContainerException;
+import org.hbrs.se1.ws22.uebung3.exception.ContainerException;
 
 import java.util.ArrayList;
 import java.util.Objects;
