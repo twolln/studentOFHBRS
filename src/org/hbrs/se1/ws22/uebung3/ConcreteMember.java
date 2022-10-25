@@ -1,6 +1,8 @@
 package org.hbrs.se1.ws22.uebung3;
 
-public class ConcreteMember implements Member {
+import java.io.Serializable;
+
+public class ConcreteMember implements Serializable, Member {
 
     private final int ID; //ID als int Wert
 
