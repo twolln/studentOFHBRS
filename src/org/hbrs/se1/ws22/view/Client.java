@@ -11,7 +11,8 @@ public class Client {
     private final Container container = Container.getInstance();
     //========================================================================================================
 
-    public void dump() {
+
+    public void getCurrentList() {
         memberview.dump(container.getCurrentList());
     }
 
