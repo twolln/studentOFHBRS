@@ -10,13 +10,24 @@ import java.util.Objects;
 public class Container {
 
     //ArrayList als Datenstruktur
-    private final ArrayList<Member> arrayList;
+    private final ArrayList<Member> arrayList = new ArrayList<>();
 
 
-    //Konstruktor
-    public Container() {
-        this.arrayList = new ArrayList<>();
+    //========================================================================================================
+    //Privater Konstruktor zur Realisierung des Singleton Entwurfsmusters
+    private Container() {
     }
+
+
+    //Privates statisches Objekt der Klasse Container erzeugen zur Realisierung des Singleton Entwurfsmusters
+    private static Container instanceOfContainer = new Container();
+
+
+    //Private statische getInstance Methode zur Realisierung des Singleton Entwurfsmusters
+    public static Container getInstance() {
+        return instanceOfContainer;
+    }
+    //========================================================================================================
 
 
     //Methode zum Hinzufügen eines Member Objektes

@@ -19,7 +19,7 @@ class ContainerTestVonUebung2 {
 
     @BeforeEach
     void setUp() {
-        c = new Container();
+        c = c.getInstance();
     }
 
     //========================================================================================================
