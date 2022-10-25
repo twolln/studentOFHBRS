@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class ContainerTestVonUebung2 {
+class ContainerTestVonUebungZwei {
 
     Container c;
     Member m1 = new ConcreteMember(100);
@@ -19,7 +19,7 @@ class ContainerTestVonUebung2 {
 
     @BeforeEach
     void setUp() {
-        c = c.getInstance();
+        c = Container.getInstance();
     }
 
     //========================================================================================================
