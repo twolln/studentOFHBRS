@@ -26,7 +26,7 @@ public class Container {
 
 
     //Privates statisches Objekt der Klasse Container erzeugen zur Realisierung des Singleton Entwurfsmusters
-    private static Container container = new Container();
+    private static final Container container = new Container();
 
 
     //Private statische getInstance Methode zur Realisierung des Singleton Entwurfsmusters
