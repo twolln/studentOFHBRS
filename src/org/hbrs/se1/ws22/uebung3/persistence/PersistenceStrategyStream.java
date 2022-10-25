@@ -2,12 +2,23 @@ package org.hbrs.se1.ws22.uebung3.persistence;
 
 import org.hbrs.se1.ws22.uebung3.exception.PersistenceException;
 
+import java.io.*;
 import java.util.List;
+
 
 public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
 
     // URL of file, in which the objects are stored
     private String location = "objects.ser";
+
+    //========================================================================================================
+    //Streams: File
+    private FileInputStream fileInputStream;
+    private FileOutputStream fileOutputStream;
+    //Streams: Object
+    private ObjectInputStream objectInputStream;
+    private ObjectOutputStream objectOutputStream;
+    //========================================================================================================
 
     // Backdoor method used only for testing purposes, if the location should be changed in a Unit-Test
     // Example: Location is a directory (Streams do not like directories, so try this out ;-)!
@@ -22,7 +33,18 @@ public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
      * and save
      */
     public void openConnection() throws PersistenceException {
+        try {
+            fileInputStream = new FileInputStream(location);
+            fileOutputStream = new FileOutputStream(location);
 
+            objectInputStream = new ObjectInputStream(fileInputStream);
+            objectOutputStream = new ObjectOutputStream(fileOutputStream);
+
+        } catch (FileNotFoundException e) {
+            throw new PersistenceException(PersistenceException.ExceptionType.ImplementationNotAvailable, "");
+        } catch (IOException e) {
+            throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, "");
+        }
     }
 
     @Override
@@ -30,7 +52,16 @@ public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
      * Method for closing the connections to a stream
      */
     public void closeConnection() throws PersistenceException {
+        try {
+            fileInputStream.close();
+            fileOutputStream.close();
 
+            objectInputStream.close();
+            objectOutputStream.close();
+
+        } catch (IOException e) {
+            throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, "");
+        }
     }
 
     @Override
@@ -38,7 +69,32 @@ public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
      * Method for saving a list of Member-objects to a disk (HDD)
      */
     public void save(List<E> member) throws PersistenceException  {
+        try {
+            fileOutputStream = new FileOutputStream(location);
+            objectOutputStream = new ObjectOutputStream(fileOutputStream);
 
+        } catch (FileNotFoundException e) {
+            throw new PersistenceException(PersistenceException.ExceptionType.ImplementationNotAvailable, "");
+        } catch (IOException e) {
+            throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, "");
+        }
+
+
+        try {
+            objectOutputStream.writeObject(member);
+
+        } catch (IOException e) {
+            throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, "");
+        }
+
+
+        try {
+            fileOutputStream.close();
+            objectOutputStream.close();
+
+        } catch (IOException e) {
+            throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, "");
+        }
     }
 
     @Override
@@ -67,6 +123,37 @@ public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
         // return newListe
 
         // and finally close the streams (guess where this could be...?)
-        return null;
+        List<E> liste;
+
+        try {
+            fileInputStream = new FileInputStream(location);
+            objectInputStream = new ObjectInputStream(fileInputStream);
+
+        } catch (FileNotFoundException e) {
+            throw new PersistenceException(PersistenceException.ExceptionType.ImplementationNotAvailable, "");
+        } catch (IOException e) {
+            throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, "");
+        }
+
+
+        try {
+            List<E> o = (List<E>) objectInputStream.readObject();
+            liste = o;
+
+        } catch (IOException e) {
+            throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, "");
+        } catch (ClassNotFoundException e) {
+            throw new PersistenceException(PersistenceException.ExceptionType.ImplementationNotAvailable, "");
+        }
+
+
+        try {
+            fileInputStream.close();
+            objectInputStream.close();
+        } catch (IOException e) {
+            throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, "");
+        }
+
+        return liste;
     }
 }
