@@ -1,8 +1,10 @@
 package org.hbrs.se1.ws22.uebung3;
 
 import org.hbrs.se1.ws22.uebung3.exception.ContainerException;
+import org.hbrs.se1.ws22.uebung3.exception.PersistenceException;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Container {
@@ -48,23 +50,23 @@ public class Container {
         return arrayList.size();
     }
 
-    /*
-    ///////////////////////////////////////////////MAIN-METHODE//////////////////////////////////////////////
 
-    public static void main(String[] args) throws ContainerException {
-        Member m1 = new ConcreteMember(12112);
-        Member m2 = new ConcreteMember(232323);
-
-        Container memberSpeicher = new Container();
-        memberSpeicher.addMember(m1);
-        memberSpeicher.addMember(m2);
-
-
-        System.out.println(memberSpeicher.deleteMember(12));
-        memberSpeicher.dump();
-
+    //Methode speichert die aktuell in einem Container-Objekt hinzugefügten Member-Objekte PERSISTENT auf einem Datenspeicher
+    public void store() throws PersistenceException {
+        //TODO
     }
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////
-    */
+
+    //Methode ermöglicht das Laden von Member-Objekten z.B. nach einem Neustart
+    public void load() throws PersistenceException {
+        //TODO
+    }
+
+
+    //Methode gibt die aktuelle Liste von Member-Objekten zurück
+    public List<Member> getCurrentList(){
+    }
+
+
+
 }
