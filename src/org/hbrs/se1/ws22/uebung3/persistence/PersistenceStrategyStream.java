@@ -41,9 +41,9 @@ public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
             objectOutputStream = new ObjectOutputStream(fileOutputStream);
 
         } catch (FileNotFoundException e) {
-            throw new PersistenceException(PersistenceException.ExceptionType.ImplementationNotAvailable, "");
-        } catch (IOException e) {
-            throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, "");
+            throw new PersistenceException(PersistenceException.ExceptionType.ImplementationNotAvailable, e.getMessage());
+        } catch (IOException d) {
+            throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, d.getMessage());
         }
     }
 
@@ -60,7 +60,7 @@ public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
             objectOutputStream.close();
 
         } catch (IOException e) {
-            throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, "");
+            throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, e.getMessage());
         }
     }
 
@@ -74,17 +74,17 @@ public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
             objectOutputStream = new ObjectOutputStream(fileOutputStream);
 
         } catch (FileNotFoundException e) {
-            throw new PersistenceException(PersistenceException.ExceptionType.ImplementationNotAvailable, "");
-        } catch (IOException e) {
-            throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, "");
+            throw new PersistenceException(PersistenceException.ExceptionType.ImplementationNotAvailable, e.getMessage());
+        } catch (IOException d) {
+            throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, d.getMessage());
         }
 
 
         try {
             objectOutputStream.writeObject(member);
 
-        } catch (IOException e) {
-            throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, "");
+        } catch (IOException d) {
+            throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, d.getMessage());
         }
 
 
@@ -92,8 +92,8 @@ public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
             fileOutputStream.close();
             objectOutputStream.close();
 
-        } catch (IOException e) {
-            throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, "");
+        } catch (IOException d) {
+            throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, d.getMessage());
         }
     }
 
@@ -130,9 +130,9 @@ public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
             objectInputStream = new ObjectInputStream(fileInputStream);
 
         } catch (FileNotFoundException e) {
-            throw new PersistenceException(PersistenceException.ExceptionType.ImplementationNotAvailable, "");
-        } catch (IOException e) {
-            throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, "");
+            throw new PersistenceException(PersistenceException.ExceptionType.ImplementationNotAvailable, e.getMessage());
+        } catch (IOException d) {
+            throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, d.getMessage());
         }
 
 
@@ -141,9 +141,9 @@ public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
             liste = o;
 
         } catch (IOException e) {
-            throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, "");
-        } catch (ClassNotFoundException e) {
-            throw new PersistenceException(PersistenceException.ExceptionType.ImplementationNotAvailable, "");
+            throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, e.getMessage());
+        } catch (ClassNotFoundException d) {
+            throw new PersistenceException(PersistenceException.ExceptionType.ImplementationNotAvailable, d.getMessage());
         }
 
 
@@ -151,7 +151,7 @@ public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
             fileInputStream.close();
             objectInputStream.close();
         } catch (IOException e) {
-            throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, "");
+            throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, e.getMessage());
         }
 
         return liste;
