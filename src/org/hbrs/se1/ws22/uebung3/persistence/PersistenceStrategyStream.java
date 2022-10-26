@@ -1,8 +1,10 @@
 package org.hbrs.se1.ws22.uebung3.persistence;
 
+
 import org.hbrs.se1.ws22.uebung3.exception.PersistenceException;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -12,10 +14,10 @@ public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
     private String location = "objects.ser";
 
     //========================================================================================================
-    //Streams: File
+    //File Streams
     private FileInputStream fileInputStream;
     private FileOutputStream fileOutputStream;
-    //Streams: Object
+    //Object Streams
     private ObjectInputStream objectInputStream;
     private ObjectOutputStream objectOutputStream;
     //========================================================================================================
@@ -72,28 +74,23 @@ public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
         try {
             fileOutputStream = new FileOutputStream(location);
             objectOutputStream = new ObjectOutputStream(fileOutputStream);
-
         } catch (FileNotFoundException e) {
             throw new PersistenceException(PersistenceException.ExceptionType.ImplementationNotAvailable, e.getMessage());
         } catch (IOException d) {
             throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, d.getMessage());
         }
-
-
         try {
             objectOutputStream.writeObject(member);
 
         } catch (IOException d) {
             throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, d.getMessage());
         }
-
-
         try {
             fileOutputStream.close();
             objectOutputStream.close();
 
-        } catch (IOException d) {
-            throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, d.getMessage());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
