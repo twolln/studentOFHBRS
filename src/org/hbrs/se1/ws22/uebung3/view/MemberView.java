@@ -1,4 +1,4 @@
-package org.hbrs.se1.ws22.view;
+package org.hbrs.se1.ws22.uebung3.view;
 
 import org.hbrs.se1.ws22.uebung3.Member;
 

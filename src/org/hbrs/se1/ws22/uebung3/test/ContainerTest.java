@@ -8,13 +8,10 @@ import org.hbrs.se1.ws22.uebung3.exception.PersistenceException;
 import org.hbrs.se1.ws22.uebung3.persistence.PersistenceStrategy;
 import org.hbrs.se1.ws22.uebung3.persistence.PersistenceStrategyMongoDB;
 import org.hbrs.se1.ws22.uebung3.persistence.PersistenceStrategyStream;
-import org.hbrs.se1.ws22.view.Client;
-import org.hbrs.se1.ws22.view.MemberView;
+import org.hbrs.se1.ws22.uebung3.view.Client;
+import org.hbrs.se1.ws22.uebung3.view.MemberView;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
